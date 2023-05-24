@@ -1,122 +1,81 @@
-SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["bbEntities"].ConnectionString);
-        SqlCommand cmd = null;
-        SqlDataAdapter da = null;
-        [HttpPost]
-        [Route("Registration")]
-        public string Registration(DonorLogin donor)
-        {
-            string msg = string.Empty;
-            try
-            {
-                da = new SqlDataAdapter("Donor_Registration", conn);
-                da.SelectCommand.CommandType = CommandType.StoredProcedure;
-                da.SelectCommand.Parameters.AddWithValue("@Name", donor.Name);
-                da.SelectCommand.Parameters.AddWithValue("@Password", donor.Password);
-                da.SelectCommand.Parameters.AddWithValue("@Age", donor.Age);
-                da.SelectCommand.Parameters.AddWithValue("@Gender", donor.Gender);
-                da.SelectCommand.Parameters.AddWithValue("@Email", donor.Email);
-                da.SelectCommand.Parameters.AddWithValue("@Mobile", donor.Mobile);
-                da.SelectCommand.Parameters.AddWithValue("@Address", donor.Address);
-
-
-                SqlParameter outParam = new SqlParameter("@IsExist", SqlDbType.Int);
-                outParam.Direction = ParameterDirection.Output;
-                da.SelectCommand.Parameters.Add(outParam);
-
-                conn.Open();
-                da.SelectCommand.ExecuteNonQuery();
-                conn.Close();
-
-                int isExist = Convert.ToInt32(da.SelectCommand.Parameters["@IsExist"].Value);
-                if (isExist == 1)
-                {
-                    msg = "User already exists.";
-                }
-                else
-                {
-                    msg = "Registration successful!";
-                }
-
-            }
-            catch (Exception ex)
-            {
-                msg = ex.Message;
-            }
-            return msg;
-        }
-
-        [HttpPost]
-        [Route("Login")]
-        public string Login(DonorLogin donor)
-        {
-            string msg = string.Empty;
-            try
-            {
-                da = new SqlDataAdapter("Donor_Login", conn);
-                da.SelectCommand.CommandType = CommandType.StoredProcedure;
-                da.SelectCommand.Parameters.AddWithValue("@Email", donor.Email);
-                da.SelectCommand.Parameters.AddWithValue("@Password", donor.Password);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    msg = "Login successful!";
-
-                }
-                else
-                {
-                    msg = "Invalid login credentials.";
-                }
-            }
-            catch (Exception ex)
-            {
-                msg = ex.Message;
-            }
-            return msg;
-        }
+create database bloodbank
+use bloodbank
+---------------------------------------
+create table DonorLogin(DonorId int Identity(1,1) Primary key,Name varchar(15),Password varchar(15),Age int,Gender varchar(7),Email varchar(30),Mobile varchar(10),Address varchar(30));
 
 
 
- try
-            {
-                DataTable table = new DataTable();
-                string query = @"insert into DonorDetails(Name,Age,Gender,Mobile, BloodGroup, Units, DonationDate,Address) values ('" + pat.Name + @"','" + pat.Age + @"','" + pat.Gender + @"','" + pat.Mobile + @"','" + pat.BloodGroup + @"','" + pat.Units + @"' , '" + pat.DonationDate + @"','" + pat.Address + @"')";
-                using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["conn"].ConnectionString))
-                using (var cmd = new SqlCommand(query, con))
-                using (var da = new SqlDataAdapter(cmd))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    da.Fill(table);
-                }
-                return "Added Successfully";
-            }
-            catch (Exception)
-            {
-                return "Failed to Add";
-            }
+create proc Donor_Registration(@Name varchar(100),@Password varchar(100) ,@Age int,@Gender varchar(7),@Email varchar(30),@Mobile varchar(10),@Address varchar(30))
+As
+begin
+insert into DonorLogin(Name,Password,Age,Gender,Email,Mobile,Address) values(@Name,@Password,@Age,@Gender,@Email,@Mobile,@Address);
+end
+
+create proc Donor_Login(@Name varchar(100),@Password varchar(100))
+As
+begin
+select * from DonorLogin where Name=@Name and Password=@Password;
+end
+
+drop table DonorLogin
+drop proc Donor_Registration
+drop proc Donor_Login
+--------------------------------------------------------------------------
+
+create table ReceiverLogin(RecieverId int Identity(1,1) Primary key,Name varchar(15),Password varchar(15),Age int,Gender varchar(7),Email varchar(30),Mobile varchar(10),Address varchar(30))
+
+create proc Receiver_Registration(@Name varchar(100),@Password varchar(100) ,@Age int,@Gender varchar(7),@Email varchar(30),@Mobile varchar(10),@Address varchar(30))
+As
+begin
+Insert into ReceiverLogin(Name,Password,Age,Gender,Email,Mobile,Address) values(@Name,@Password,@Age,@Gender,@Email,@Mobile,@Address);
+end
+create proc Receiver_Login(@Name varchar(100),@Password varchar(100))
+As
+begin
+select * from ReceiverLogin where Name=@Name and Password=@Password;
+end
+
+drop table ReceiverLogin
+drop proc Receiver_Registration
+drop proc Receiver_Login
+---------------------------------------------------------------
+
+create table PersonDetails(PersonId int primary key identity(1,1) not null,   
+Name varchar(20), 
+Password varchar(20), 
+Gender varchar(20), 
+Age int, 
+PhoneNo varchar(20),   
+BloodGroup varchar(10), 
+Address varchar(20), 
+Email varchar(20),
+Type varchar(10),   
+)
+
+drop table PersonDetails
+---------------------------------------------------
+
+create table ReceiverDetails(ReceiverId int identity(1,1) primary key,Name varchar(30),
+Age int,Gender varchar(7),Mobile varchar(10),BloodGroup varchar(15),Units int,HospitalName varchar(50),Address varchar(35),Status varchar(10));
+
+drop table ReceiverDetails
 
 
- -------------------------------------------
- public string Put(DonorDetail pat)
-        {
-            try
-            {
-                DataTable table = new DataTable();
-                string query = @"update DonorDetails set Name = '" + pat.Name + @"',Age = '" + pat.Age + @"',Gender = '" + pat.Gender + @"',Mobile = '" + pat.Mobile + @"', BloodGroup= '" + pat.BloodGroup + @"', Units='" + pat.Units + @"', DonationDate='" + pat.DonationDate + @"', Address='" + pat.Address + @"' where DonorId =" + pat.DonorId + @" ";
-                using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["conn"].ConnectionString))
-                using (var cmd = new SqlCommand(query, con))
-                using (var da = new SqlDataAdapter(cmd))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    da.Fill(table);
-                }
-                Update();
 
-                return "Updated Successfully";
-            }
-            catch (Exception)
-            {
-                return "Failed to Update";
-            }
+create table DonorDetails(DonorId int identity(1,1) primary key,Name varchar(30),
+Age int,Gender varchar(7),Mobile varchar(10),BloodGroup varchar(15),Units int,DonationDate date,Address varchar(35));
 
-        }
+drop table DonorDetails
+
+
+create table StockDetails(StockId int identity(1,1) primary key,BloodGroup varchar(15),Units int);
+insert into StockDetails values('OPositive',5)
+
+drop table StockDetails
+
+
+select * from ReceiverDetails
+select * from DonorDetails
+select * from StockDetails
+select * from DonorLogin
+
