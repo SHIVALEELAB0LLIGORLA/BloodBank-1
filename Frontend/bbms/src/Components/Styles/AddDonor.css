@@ -1,0 +1,47 @@
+.donate-container {
+    max-width: 400px;
+    margin-left:50%;
+    margin-top: 20px;
+   
+ 
+  }
+ .image{
+    background-image: url('../Styles/Donate2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+  }
+  
+  .dform-group {
+    display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  }
+  
+  .dlabel {
+    flex: 0 0 120px;
+  font-weight: bold;
+  margin-right: 10px;
+  }
+  
+  .dinput {
+    flex: 1;
+    padding: 5px;
+  }
+  
+  .dbutton {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color:darksalmon;
+    color: crimson;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .derror-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+  

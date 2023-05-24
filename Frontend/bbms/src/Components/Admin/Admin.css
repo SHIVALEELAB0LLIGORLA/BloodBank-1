@@ -1,0 +1,55 @@
+.admin-login {
+    width: 300px;
+    margin-left: 37%;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .admin-login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .admin-login label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .admin-login input[type="text"],
+  .admin-login input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .admin-login button {
+    width: 100%;
+    padding: 10px;
+    background-color:deepskyblue;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .admin-login button:hover {
+    background-color:dodgerblue;
+  }
+  
+  .admin-login .error-message {
+    color: red;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .Acontain{
+    background-image: Url('./image2.png');
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-position: right;
+  }

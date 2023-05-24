@@ -1,0 +1,64 @@
+.receiverlogin {
+    max-width: 350px;
+   margin-left: 37%;
+   margin-top: 40px;
+    padding: 50px;
+    background-color:bisque;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+   
+   
+  }
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+  .lh2 {
+    
+    /* margin-bottom: px;*/
+    text-align: center;
+    color:dimgrey
+   
+  }
+  
+  .llabel {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .linput[type='text'],
+  .linput[type='password']
+  {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    
+  }
+  
+  .lerror {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .r_login {
+    margin-top: 10px;
+   
+  }
+  
+  .lbutton {
+    padding: 10px 20px;
+    background-color:crimson;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  

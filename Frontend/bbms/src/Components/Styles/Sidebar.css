@@ -1,0 +1,72 @@
+*{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+  }
+ 
+  .Smain{
+    width:100%;
+    padding:20px;
+  }
+  .Ssidebar{
+    background:crimson;
+    color:#fff;
+    height:100vh;
+  }
+  .Stop_section{
+    display: flex;
+    align-items: center;
+    padding: 20px 15px;
+  }
+  .Slogo{
+    
+    font-size: 25px;
+    
+  }
+  .Sbars{
+    display: flex;
+    font-size: 25px;
+    margin-left: 90px;
+  }
+  .Slink{
+    display: flex;
+    color:#fff;
+    padding: 10px 15px;
+    gap:15px;
+    transition: all 0.5s;
+  }
+  .Slink:hover{
+    background: lightgray;
+    color: brown;
+    transition: all 0.5s;
+  }
+  .Sactive{
+    background: lightseagreen;
+    color:black;
+  }
+  .Sicon,link_text{
+    font-size: 20px;
+  }
+  .Sui main{
+    text-align: center;
+    transition: all 0.5s;
+  }
+  .Scontainer{
+    /* background-color: transparent; */
+    position: relative;
+    width: 100%;
+    
+    min-height: 70vh;
+    height: 60%;
+    background-image: url('../Donor/bg5.jpg');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    
+    
+}
+.Scontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: left;  
+}

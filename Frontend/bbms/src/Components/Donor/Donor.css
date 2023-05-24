@@ -1,0 +1,79 @@
+.donorhistory {
+    text-align: center;
+   
+  }
+  
+  .donorhistory h1 {
+    margin-top: 0;
+  }
+  
+  .donorhistory .mt-3 {
+    margin-top: 1rem;
+  }
+  
+  .donorhistory th,
+  .donorhistory td {
+    padding: 0.5rem;
+  }
+  
+  .donorhistory thead th {
+    background-color: #f0f0f0;
+  }
+  
+  .donorhistory tbody tr:nth-child(even) {
+    background-color: #f0f0f0;
+  }
+  .Searchform {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .Searchlabel {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .Searchinput[type="text"] {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  .Searchbutton {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .Searchtable {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+  }
+  
+  .Searchth,
+  .Searchtd {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .Searchth {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .Searchtbody .Searchtr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .Searchtbody .Searchtr:hover {
+    background-color: #ddd;
+  }
+  
+  .Searchp {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
