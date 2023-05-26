@@ -42,7 +42,6 @@ drop proc Receiver_Login
 
 create table PersonDetails(PersonId int primary key identity(1,1) not null,   
 Name varchar(20), 
-Password varchar(20), 
 Gender varchar(20), 
 Age int, 
 PhoneNo varchar(20),   
